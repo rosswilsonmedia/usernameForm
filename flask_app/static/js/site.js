@@ -29,8 +29,10 @@ userRegForm.onsubmit = function(e){
     var formData= new FormData(userRegForm);
     fetch("/create/user", { method:'POST', body: formData})
         .then( response => response.json() )
-        .then( data => console.log(data) )
-    document.getElementById('user_name').value="";
-    document.getElementById('email').value="";
-    getUsers();
+        .then( function(data){
+            console.log(data);
+            document.getElementById('user_name').value="";
+            document.getElementById('email').value="";
+            getUsers();
+        })
 }
